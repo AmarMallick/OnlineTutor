@@ -10,6 +10,9 @@ namespace TutorApi.Controllers
 {
     public class UsersController : ApiController
     {
+        /// <summary>
+        /// Get Users
+        /// </summary>
         private TutionProEntities tutionProEntities = new TutionProEntities();
         // GET: api/Users
         public List<User> Get()
