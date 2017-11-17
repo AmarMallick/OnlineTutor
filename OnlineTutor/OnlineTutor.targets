@@ -1,0 +1,437 @@
+<Project DefaultTargets="Full" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+  <Import Project="Buildtools\Microsoft.Sdc.Tasks\Microsoft.Sdc.Common.Tasks" />
+  <Import Project="Buildtools\MSBuild.Community.Tasks\MSBuild.Community.Tasks.Targets" />
+
+  <!-- Properties -->
+  <PropertyGroup>
+    <ProjectName>OnlineTutor</ProjectName>
+    <SolutionName>OnlineTutor</SolutionName>
+    <OutputDirectory>Build</OutputDirectory>
+
+    <RunTests>false</RunTests>
+    <RunFxCop>false</RunFxCop>
+    <RunCodeCoverage>True</RunCodeCoverage>
+    <RunLabelRepository>true</RunLabelRepository>
+    <RunPackaging>true</RunPackaging>
+
+    <FxCopExecutable>tools\FxCop\FxCopCmd.exe</FxCopExecutable>
+    <FxCopOutputFile>fxcop-results.xml</FxCopOutputFile>
+    <SourceDir>./</SourceDir>
+    <LibraryDir>lib/</LibraryDir>
+    <RePackagingDirectory>repackaging</RePackagingDirectory>
+    <MSTestOutputFileName>mstest-results.xml</MSTestOutputFileName>
+    <!-- <UnitTestAssemblies>$(SourceDir)*UnitTests\bin\debug\*UnitTests.dll</UnitTestAssemblies> -->
+   <!--  <UnitTestAssembliesIntegration>$(SourceDir)*IntegrationTests\bin\debug\*IntegrationTests.dll</UnitTestAssembliesIntegration> -->
+
+    <FileVersionPrefix>1.0</FileVersionPrefix>
+    <FileVersionSuffix>0</FileVersionSuffix>
+    <AssemblyVersionFixed>false</AssemblyVersionFixed>
+    <AssemblyVersionFixedValue>1.0.0.0</AssemblyVersionFixedValue>
+    <!-- <NUnit>Buildtools\NUnit\bin\nunit-console-x86.exe</NUnit> -->
+    <OpenCoverExecutable>Buildtools\OpenCover\OpenCover.Console.exe</OpenCoverExecutable>
+    <ReportGenExecutable>Buildtools\ReportGenerator\ReportGenerator.exe</ReportGenExecutable>
+
+    <!--NuGet properties-->
+    <NuGetExePath>[TODO : NuGet.exe path. eg: $(LibraryDir)\NuGet\NuGet.exe]</NuGetExePath>
+    <NuGetAPIKey>[TODO : API key to access package source. eg: D1E61BBD-2600-452B-B235-C07EF2A5DCCB]</NuGetAPIKey>
+    <NuGetSource>[TODO : Specify NuGet server url. eg: http://nuget.pe.int.thomsonreuters.com/nuget/Barossa] </NuGetSource>
+    <BuildNuGetPackage>False</BuildNuGetPackage>
+    <PushNuGetPackage>False</PushNuGetPackage>
+
+    <!-- [TODO: To perform NuGet update, replace <SolutionFolder>\.nuget\NuGet.targets with NuGet.targets file available under Tools folder] -->
+    <UpdateNuGetPackages Condition="'$(BUILD_NUMBER)'!=''">false</UpdateNuGetPackages>
+    <UpdateNuGetPackages Condition="'$(BUILD_NUMBER)'==''">false</UpdateNuGetPackages>
+  </PropertyGroup>
+
+  <!-- <Import Project="$(ProjectName).Custom.targets" Condition="Exists('$(ProjectName).Custom.targets')" /> -->
+
+  <!-- Directories -->
+  <ItemGroup>
+    <BinDirectories Include="**\bin\**\*"  Exclude="**\buildsuite\**\*;**\NUnit\bin\**\*"/>
+    <ObjDirectories Include="**\obj\**\*" />
+    <BuildDirectory Include="$(OutputDirectory)" />
+    <LocalTestResults Include="$(SourceDir)TestResults" />
+    <OpenCoverDirectory Include="$(OutputDirectory)\OpenCover" />
+    <TestsDirectory Include="$(OutputDirectory)\Tests\" />
+    <DistributionDirectory Include="$(OutputDirectory)\Dist" />
+    <!-- <BuildRepository Include="\\10.242.247.4\BuildEngDist\Dist\$(ProjectName)" /> -->
+  </ItemGroup>
+
+  <!-- Solution file -->
+ <ItemGroup>
+    <SolutionFile Include="$(SourceDir)\OnlineTutor.sln" />
+  </ItemGroup>  
+
+  <!-- NuGet Assemblies to pack -->
+  <ItemGroup>
+    <AssemblyToPack Include="$(DistributionDirectory)\Release\$(ProjectName).dll" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <CleanDependsOn>
+      BeforeClean;
+      CoreClean;
+      AfterClean
+    </CleanDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="Clean"
+			DependsOnTargets="$(CleanDependsOn)"
+	/>
+  <Target Name="CoreClean">
+    <RemoveDir Directories="%(BinDirectories.relativedir)" Condition="Exists('%(BinDirectories.relativedir)')" ContinueOnError="true" />
+    <RemoveDir Directories="%(ObjDirectories.relativedir)" Condition="Exists('%(ObjDirectories.relativedir)')" ContinueOnError="true" />
+    <RemoveDir Directories="@(BuildDirectory)" Condition="Exists('@(BuildDirectory)')" ContinueOnError="false" />
+    <RemoveDir Directories="@(LocalTestResults)" Condition="Exists('@(LocalTestResults)')" ContinueOnError="false" />
+    <RemoveDir Directories="$(RePackagingDirectory)\BINARIES" Condition="Exists('$(RePackagingDirectory)\BINARIES')" ContinueOnError="false" />
+    <RemoveDir Directories="$(RePackagingDirectory)\RELEASE" Condition="Exists('$(RePackagingDirectory)\RELEASE')" ContinueOnError="false" />
+    <RemoveDir Directories="$(RePackagingDirectory)\TPMRELEASE" Condition="Exists('$(RePackagingDirectory)\TPMRELEASE')" ContinueOnError="false" />
+  </Target>
+
+  <PropertyGroup>
+    <BuildDebugDependsOn>
+      BeforeBuildDebug;
+      CoreBuildDebug;
+      AfterBuildDebug
+    </BuildDebugDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="BuildDebug"
+			DependsOnTargets="$(BuildDebugDependsOn)"
+	/>
+  <Target Name="CoreBuildDebug">
+    <MSBuild Projects="%(SolutionFile.FullPath)" Properties="Configuration=Debug" />
+  </Target>
+
+  <PropertyGroup>
+    <BuildReleaseDependsOn>
+      BeforeBuildRelease;
+      CoreBuildRelease;
+      AfterBuildRelease
+    </BuildReleaseDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="BuildRelease"
+			DependsOnTargets="$(BuildReleaseDependsOn)"
+	/>
+  <Target Name="CoreBuildRelease">
+    <MSBuild Projects="%(SolutionFile.FullPath)" Properties="Configuration=Release" />
+  </Target>
+
+  <PropertyGroup>
+    <UnitTestDependsOn>
+      BeforeUnitTest;
+      CoreUnitTest;
+      AfterUnitTest
+    </UnitTestDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="UnitTest"
+			DependsOnTargets="$(UnitTestDependsOn)"
+	/>
+  <Target Name="CoreUnitTest" Condition="$(RunTests)">
+    <CreateItem Include="$(UnitTestAssemblies)">
+      <Output TaskParameter="Include" ItemName="AssembliesToTest" />
+    </CreateItem>
+
+    <!--<CreateItem Include="$(UnitTestAssembliesIntegration)">
+			<Output TaskParameter="Include" ItemName="AssembliesToTestIntegration" />
+		</CreateItem>-->
+    <MakeDir Directories="%(TestsDirectory.fullpath)" Condition="!Exists('%(TestsDirectory.fullpath)')" />
+    <CreateProperty Value="@(AssembliesToTest ->'/testcontainer:&quot;%(fullpath)&quot;',' ')">
+      <Output TaskParameter="Value" PropertyName="testList" />
+    </CreateProperty>
+
+    <CreateProperty Value="&quot;$(SourceDir)localtestrun.testrunconfig&quot;">
+      <Output TaskParameter="Value" PropertyName="TestConfigFile"/>
+    </CreateProperty>
+
+    <Message Text="$(NUnit) @(AssembliesToTest) /xml:&quot;@(TestsDirectory)Unit-nunit-results.xml&quot;" />
+    <Exec Command="$(NUnit) @(AssembliesToTest->'&quot;%(FullPath)&quot;', ' ') /xml:&quot;@(TestsDirectory)Unit-nunit-results.xml&quot;" ContinueOnError="false" />
+
+    <!--<Message Text="$(NUnit) @(AssembliesToTestIntegration) /xml:&quot;@(TestsDirectory)Integration-nunit-results.xml&quot;" />
+    <Exec Command="$(NUnit) @(AssembliesToTestIntegration) /xml:&quot;@(TestsDirectory)Integration-nunit-results.xml&quot;" ContinueOnError="false" />-->
+  </Target>
+
+  <PropertyGroup>
+    <StaticAnalysisDependsOn>
+      BeforeStaticAnalysis;
+      CoreStaticAnalysis;
+      AfterStaticAnalysis
+    </StaticAnalysisDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="StaticAnalysis"
+			DependsOnTargets="$(StaticAnalysisDependsOn)"
+	/>
+  <Target Name="CoreStaticAnalysis" Condition="$(RunFxCop) and Exists('$(FxCopExecutable)')">
+    <MakeDir Directories="%(TestsDirectory.fullpath)" Condition="!Exists('%(TestsDirectory.fullpath)')" />
+    <Delete Files="%(TestsDirectory.fullpath)\$(FxCopOutputFile)" Condition="Exists('%(TestsDirectory.fullpath)\$(FxCopOutputFile)')" ContinueOnError="false" />
+
+    <Exec Command="&quot;$(FxCopExecutable)&quot; /p:&quot;$(SolutionName).fxcop&quot; /o:&quot;%(TestsDirectory.fullpath)\$(FxCopOutputFile)&quot; /outxsl:&quot;$(MSBuildProjectDirectory)\tools\fxcop\Xml\FxCopReport.xsl&quot;" />
+    <Error Condition="Exists('%(TestsDirectory.fullpath)\$(FxCopOutputFile)')" Text="FxCop result file found." />
+  </Target>
+
+  <PropertyGroup>
+    <CodeCoverageExportDependsOn>
+      BeforeCodeCoverageExport;
+      CoreCodeCoverageExport;
+      AfterCodeCoverageExport
+    </CodeCoverageExportDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="CodeCoverageExport"
+			DependsOnTargets="$(CodeCoverageExportDependsOn)"
+	/>
+  <Target Name="CoreCodeCoverageExport" Condition="$(RunCodeCoverage)">
+    <ItemGroup>
+      <CodeCoverageAssemblies Include="$(SourceDir)*UnitTests\bin\debug\*UnitTests.dll" />
+      
+    </ItemGroup>
+    <MakeDir Directories="%(OpenCoverDirectory.fullpath)" Condition="!Exists('%(OpenCoverDirectory.fullpath)')" />
+    <CreateProperty Value="%(OpenCoverDirectory.fullpath)">
+      <Output TaskParameter="Value" PropertyName="OutputPath" />
+    </CreateProperty>
+    <Message Text="$(OpenCoverExecutable) -register:user -target:$(NUnit) -targetargs:&quot;/noshadow %(CodeCoverageAssemblies.fullpath) /domain:single&quot; -mergeoutput -output:&quot;$(OutputPath)\OpenCover-results.xml&quot;" />
+    <Exec Command="$(OpenCoverExecutable) -register:user -target:$(NUnit) -targetargs:&quot;/noshadow %(CodeCoverageAssemblies.fullpath) /domain:single&quot; -mergeoutput -output:&quot;$(OutputPath)\OpenCover-results.xml&quot;" ContinueOnError="false" />
+
+    <Exec Command="$(ReportGenExecutable) -reports:&quot;$(OutputPath)\OpenCover-results.xml&quot; -targetdir:&quot;$(OutputPath)\Reports&quot;" ContinueOnError="false" />
+  </Target>
+
+  <PropertyGroup>
+    <VersionDependsOn>
+      BeforeVersion;
+      CoreVersion;
+      AfterVersion
+    </VersionDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="Version"
+			DependsOnTargets="$(VersionDependsOn)"
+	/>
+  <Target Name="CoreVersion">
+    <CreateProperty Value="0">
+      <Output TaskParameter="Value" PropertyName="buildNumber"/>
+    </CreateProperty>
+
+    <CreateProperty Value="$(BUILD_NUMBER)" Condition="'$(BUILD_NUMBER)'!=''">
+      <Output TaskParameter="Value" PropertyName="buildNumber"/>
+    </CreateProperty>
+
+    <CreateProperty Value="$(FileVersionPrefix).$(buildNumber).$(FileVersionSuffix)">
+      <Output TaskParameter="Value" PropertyName="fileVersionNumber"/>
+    </CreateProperty>
+
+    <CreateProperty Value="$(fileVersionNumber)">
+      <Output TaskParameter="Value" PropertyName="assemblyVersionNumber"/>
+    </CreateProperty>
+
+    <CreateProperty Value="$(AssemblyVersionFixedValue)" Condition="$(AssemblyVersionFixed)">
+      <Output TaskParameter="Value" PropertyName="assemblyVersionNumber"/>
+    </CreateProperty>
+
+    <AssemblyInfo CodeLanguage="CS"
+				OutputFile="$(SourceDir)ActivityService\Properties\VersionInfo.cs"
+				AssemblyVersion="$(assemblyVersionNumber)"
+				AssemblyFileVersion="$(fileVersionNumber)"/>
+    <AssemblyInfo CodeLanguage="CS"
+				OutputFile="$(SourceDir)ActivityService.UnitTests\Properties\VersionInfo.cs"
+				AssemblyVersion="$(assemblyVersionNumber)"
+				AssemblyFileVersion="$(fileVersionNumber)"/>
+   
+  </Target>
+
+  <PropertyGroup>
+    <PrepareDistributionFilesDependsOn>
+      BeforePrepareDistributionFiles;
+      CorePrepareDistributionFiles;
+      AfterPrepareDistributionFiles
+    </PrepareDistributionFilesDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="PrepareDistributionFiles"
+			DependsOnTargets="$(PrepareDistributionFilesDependsOn)"
+	/>
+  <Target Name="CorePrepareDistributionFiles">
+    <MakeDir Directories="%(DistributionDirectory.FullPath)" Condition="!Exists(%(DistributionDirectory.FullPath))" />
+
+    <Message Text="Prepare Distribution" />
+
+
+    <ItemGroup>
+      <FilesToCopyDist Include="$(SourceDir)\OnlineTutor\bin\Release\*;" />
+                            <!-- $(SourceDir)\ActivityService.UnitTests\bin\Release\*;" /> -->
+    </ItemGroup>
+
+    <Copy SourceFiles="@(FilesToCopyDist)" DestinationFolder=".\Build\Dist\OnlineTutor\%(RecursiveDir)" />
+  </Target>
+
+  <PropertyGroup>
+    <CreateZipDependsOn>
+      BeforeCreateZip;
+      CoreCreateZip;
+      AfterCreateZip
+    </CreateZipDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="CreateZip"
+			DependsOnTargets="$(CreateZipDependsOn)"
+	/>
+  <Target Name="CoreCreateZip">
+    <CreateItem Include="$(OutputDirectory)\Dist\**\*">
+      <Output TaskParameter="Include" ItemName="ZipFiles"/>
+    </CreateItem>
+    <CreateProperty Value="$(ProjectName).$(fileVersionNumber).zip">
+      <Output TaskParameter="Value" PropertyName="ZipFileName"/>
+    </CreateProperty>
+
+    <Zip Files="@(ZipFiles)"
+				ZipFileName="$(OutputDirectory)\Dist\$(ZipFileName)"
+				WorkingDirectory="$(OutputDirectory)\Dist" />
+  </Target>
+
+
+  <PropertyGroup>
+    <PrepareWICSBinariesDependsOn>
+      BeforePrepareWICSBinaries;
+      CorePrepareWICSBinaries;
+      AfterPrepareWICSBinaries
+    </PrepareWICSBinariesDependsOn>
+
+  </PropertyGroup>
+  <Target
+			Name="PrepareWICSBinaries"
+			DependsOnTargets="$(PrepareWICSBinariesDependsOn)"
+	/>
+  <Target Name="CorePrepareWICSBinaries" Condition="$(RunPackaging)">
+    <CreateItem
+			Include="$(OutputDirectory)\Dist\Product\**\*"
+			Exclude="$(OutputDirectory)\Dist\Product\**\*.pdb" >
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
+    </CreateItem>
+
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(RePackagingDirectory)\BINARIES\$(fileVersionNumber)\Feature\%(RecursiveDir)%(Filename)%(Extension)')" />
+
+  </Target>
+
+  <PropertyGroup>
+    <WixInstallerDependsOn>
+      BeforeWixInstaller;
+      CoreWixInstaller;
+      AfterWixInstaller
+    </WixInstallerDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="WixInstaller"
+			DependsOnTargets="$(WixInstallerDependsOn)"
+	/>
+  <Target Name="CoreWixInstaller" Condition="$(RunPackaging)">
+    <MSBuild Projects="$(RePackagingDirectory)\wics\base.wics.targets" Properties="Product_Version=$(fileVersionNumber);Tpm_Version=$(FileVersionPrefix).$(buildNumber);Tpm_Version_Suffix=$(FileVersionSuffix)" ContinueOnError="false" />
+    <Copy SourceFiles="$(RePackagingDirectory)\RELEASE\$(fileVersionNumber)\Product.msi" DestinationFolder="$(OutputDirectory)\Dist\Package" />
+    <CreateItem Include="$(RePackagingDirectory)\config\Environment\*.xml">
+      <Output TaskParameter="Include" ItemName="ConfigFiles"/>
+    </CreateItem>
+    <Copy SourceFiles="@(ConfigFiles)" DestinationFolder="$(OutputDirectory)\Dist\Package" />
+    <CreateItem Include="$(RePackagingDirectory)\TPMRELEASE\$(FileVersionPrefix).$(buildNumber)\*.tar.Z;$(RePackagingDirectory)\TPMRELEASE\$(FileVersionPrefix).$(buildNumber)\*.spb">
+      <Output TaskParameter="Include" ItemName="TpmFiles"/>
+    </CreateItem>
+    <Copy SourceFiles="@(TpmFiles)" DestinationFolder="$(OutputDirectory)\Dist\Package" />
+  </Target>
+
+  <PropertyGroup>
+    <CopyDistributionDependsOn>
+      BeforeCopyDistribution;
+      CoreCopyDistribution;
+      AfterCopyDistribution
+    </CopyDistributionDependsOn>
+  </PropertyGroup>
+  <Target
+			Name="CopyDistribution"
+			DependsOnTargets="$(CopyDistributionDependsOn)"
+	/>
+  <Target Name="CoreCopyDistribution">
+    <CreateItem Include="@(BuildRepository->'%(FullPath)\$(ProjectName).$(fileVersionPrefix)')">
+      <Output TaskParameter="Include" ItemName="DestinationDirectory" />
+    </CreateItem>
+
+    <MakeDir Directories="%(DestinationDirectory.FullPath)" Condition="!Exists(%(DestinationDirectory.FullPath))" />
+
+    <Copy SourceFiles="$(OutputDirectory)\Dist\$(ZipFileName)" DestinationFiles="@(DestinationDirectory->'%(FullPath)\$(ZipFileName)')" />
+  </Target>
+
+  <Target Name="BuildNuGetPackage" Condition="$(BuildNuGetPackage)">
+    <Message Text="Creating NuGet Packages of $(ProjectName) binaries:"/>
+    <RemoveDir Directories="$(OutputDirectory)\Packages" Condition="Exists('$(OutputDirectory)\Packages')" ContinueOnError="true" />
+    <MakeDir Directories="$(OutputDirectory)\Packages\ToPush" Condition="!Exists('$(OutputDirectory)\Packages\ToPush')" />
+
+    <Copy SourceFiles="%(AssemblyToPack.FullPath)" DestinationFiles="$(OutputDirectory)\Packages\Build\%(AssemblyToPack.Filename)\Lib\%(Filename)%(Extension)" />
+    <Exec WorkingDirectory="$(OutputDirectory)\Packages\Build\%(AssemblyToPack.Filename)" Command="$(NuGetExePath) spec %(AssemblyToPack.Filename)"/>
+
+    <XmlUpdate Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd" XmlFileName="$(OutputDirectory)\Packages\Build\%(AssemblyToPack.Filename)\%(AssemblyToPack.Filename).nuspec" XPath="/package/metadata/version" Value="$(fileVersionNumber)"/>
+    <XmlUpdate Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd" XmlFileName="$(OutputDirectory)\Packages\Build\%(AssemblyToPack.Filename)\%(AssemblyToPack.Filename).nuspec" XPath="/package/metadata/description" Value="%(AssemblyToPack.Filename).dll"/>
+    <XmlUpdate Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd" XmlFileName="$(OutputDirectory)\Packages\Build\%(AssemblyToPack.Filename)\%(AssemblyToPack.Filename).nuspec" XPath="/package/metadata/dependencies" Value=" "/>
+    <Exec Command="$(NuGetExePath) pack $(OutputDirectory)\Packages\Build\%(AssemblyToPack.Filename)\%(AssemblyToPack.Filename).nuspec -Version $(fileVersionNumber) -OutputDirectory $(OutputDirectory)\Packages\ToPush"/>
+  </Target>
+
+  <Target Name="PushNuGetPackage" Condition="'$(BUILD_NUMBER)'!='' And $(PushNuGetPackage)">
+    <Message Text="Pushing NuGet Packages to server"/>
+    <Exec Command="$(NuGetExePath) push $(OutputDirectory)\Packages\ToPush\*.nupkg -s $(NuGetSource) $(NuGetAPIKey)"/>
+  </Target>
+
+  
+
+  <Target Name="Full"
+				DependsOnTargets="
+				Clean;
+				Version;
+				BuildDebug;
+				CodeCoverageExport;
+        		BuildRelease;
+				StaticAnalysis;
+				PrepareDistributionFiles;
+				PrepareWICSBinaries;
+				WixInstaller;
+				CreateZip
+          "/>
+
+  <Target Name="Jenkins"
+				DependsOnTargets="
+				Clean;
+				Version;
+				BuildDebug;
+				CodeCoverageExport;
+				BuildRelease;
+				StaticAnalysis;
+				PrepareDistributionFiles;
+				PrepareWICSBinaries;
+				WixInstaller;
+          " />
+
+  <Target Name="JenkinsPostBuild" DependsOnTargets="
+          Version;
+          CreateZip;
+          CopyDistribution;
+          LabelRepository;" />
+
+
+  <Target Name="Compile"
+				DependsOnTargets="
+					Version;
+					BuildDebug" />
+
+  <Target Name="Quick"
+					DependsOnTargets="
+						Version;
+						BuildDebug;
+						StaticAnalysis" />
+
+  <Target Name="FxCop"
+				DependsOnTargets="
+						Version;
+						BuildDebug;
+						StaticAnalysis" />
+
+  
+
+</Project>

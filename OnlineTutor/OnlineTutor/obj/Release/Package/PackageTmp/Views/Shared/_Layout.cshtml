@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/custom/animate.css" rel="stylesheet" />
+    <link href="~/Content/custom/icomoon.css" rel="stylesheet" />
+    <link href="~/Content/custom/themify-icons.css" rel="stylesheet" />
+    <link href="~/Content/custom/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/custom/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/custom/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/Content/custom/style.css" rel="stylesheet" />
+    
+</head>
+<body>
+    
+    
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - HomeTutor.com</p>
+        </footer>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/custom/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/custom/jquery.magnific-popup.min.js"></script>
+    <script src="~/Scripts/custom/jquery.stellar.min.js"></script>
+    <script src="~/Scripts/custom/jquery.waypoints.min.js"></script>
+    <script src="~/Scripts/custom/magnific-popup-options.js"></script>
+    <script src="~/Scripts/custom/main.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
