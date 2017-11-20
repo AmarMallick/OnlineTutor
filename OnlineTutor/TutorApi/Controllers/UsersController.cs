@@ -12,6 +12,7 @@ namespace TutorApi.Controllers
     {
         /// <summary>
         /// Get Users
+        /// HI
         /// </summary>
         private TutionProEntities tutionProEntities = new TutionProEntities();
         // GET: api/Users
