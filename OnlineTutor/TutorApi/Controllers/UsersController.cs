@@ -29,8 +29,10 @@ namespace TutorApi.Controllers
         }
 
         // POST: api/Users
-        public void Post([FromBody]string value)
+        public void Post(User user)
         {
+           tutionProEntities.Users.Add(user);
+           tutionProEntities.SaveChanges();
         }
 
         // PUT: api/Users/5

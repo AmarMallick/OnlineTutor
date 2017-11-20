@@ -39,3 +39,44 @@ C:\OnlineTutor\OnlineTutor\TutorApi\bin\WebActivatorEx.dll
 C:\OnlineTutor\OnlineTutor\TutorApi\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
 C:\OnlineTutor\OnlineTutor\TutorApi\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\OnlineTutor\OnlineTutor\TutorApi\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\obj\Debug\TutorApi.csprojResolveAssemblyReference.cache
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\obj\Debug\TutorApi.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\TutorApi.dll.config
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\TutorApi.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\TutorApi.pdb
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\Antlr3.Runtime.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\EntityFramework.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\EntityFramework.SqlServer.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\Newtonsoft.Json.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\Swashbuckle.Core.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Net.Http.Formatting.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Helpers.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Http.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Http.WebHost.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Mvc.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Optimization.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Razor.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.WebPages.Deployment.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.WebPages.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.WebPages.Razor.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\WebActivatorEx.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\WebGrease.dll
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\EntityFramework.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\EntityFramework.SqlServer.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\Newtonsoft.Json.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Net.Http.Formatting.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Helpers.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Http.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Http.WebHost.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Mvc.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Optimization.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.Razor.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.WebPages.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.WebPages.Deployment.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\System.Web.WebPages.Razor.xml
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\bin\Antlr3.Runtime.pdb
+C:\Users\u6046640\Desktop\New folder (3)\OnlineTutor\TutorApi\obj\Debug\TutorApi.pdb
