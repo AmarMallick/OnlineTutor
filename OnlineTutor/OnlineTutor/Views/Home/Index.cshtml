@@ -10,11 +10,12 @@ p, a span {
     color: orange;
 }
 </style>
+
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <div class="gtco-loader"></div>
 
     <div id="page">
-
         <nav class="gtco-nav scrolled" role="navigation">
             <div class="container">
                 <div class="row">
@@ -29,15 +30,16 @@ p, a span {
                     <div class="col-xs-10 text-right menu-1 main-nav">
                         <ul style="color:yellow;">
                             <li class="active"><a href="#" data-nav-section="home">Home</a></li>
-                            <li><a href="#" data-nav-section="about">About</a></li>
-                            <li><a href="#" data-nav-section="practice-areas">Practice Areas</a></li>
-                            <li><a href="#" data-nav-section="our-team">Our Team</a></li>
+                            @*<li><a href="#" data-nav-section="about">About</a></li>*@
+                            <li><a href="#" data-nav-section="practice-areas">Our Capabilities</a></li>
+                            @*<li><a href="#" data-nav-section="our-team">Our Team</a></li>*@
                             <li><a data-nav-section="Login">Login</a></li>
+                           @* <li><a href="~/Views/Home/Index.cshtml">Login</a></li>*@
                             <li class="btn-cta"><a href="#" data-nav-section="contact"><span>Contact</span></a></li>
 
 
                         </ul>
-
+                        
                     </div>
                 </div>
 
@@ -46,7 +48,8 @@ p, a span {
 
         
 
-        <section id="gtco-hero" class="gtco-cover" style="background-image: url(/Images/Logo3.png);" data-section="home" data-stellar-background-ratio="0.5">
+        
+        <section id="gtco-hero" class="gtco-cover" style="background-image: url(/Images/logo_1000x1000px.png);" data-section="home" data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
@@ -66,9 +69,9 @@ p, a span {
             <div class="container">
                 <div class="row row-pb-md">
                     <div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
-                        <h1>Welcome To Our Law Offices</h1>
-                        <p class="sub">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p class="subtle-text animate-box" data-animate-effect="fadeIn">Welcome</p>
+                        <h1>CONNECT SMART CONSULTING</h1>
+                        <p class="sub">Your Digital Consulting Parners</p>
+                        <p class="subtle-text animate-box" data-animate-effect="fadeIn">Connect Smart</p>
                     </div>
                 </div>
                 <div class="row">
@@ -78,8 +81,9 @@ p, a span {
                         </div>
                     </div>
                     <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                        <h2 class="heading-colored">Excellence &amp; Honesty</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut praesentium nihil hic quam culpa magnam ducimus suscipit repellat quidem cumque, unde impedit, labore earum eligendi perspiciatis nemo molestiae sequi veritatis. Veritatis, reprehenderit, eaque! Rerum, libero ipsam enim, iusto adipisci quae repellendus officia consequatur ducimus cupiditate impedit, aliquam numquam excepturi.</p>
+                        <h2 class="heading-colored">About Us</h2>
+                        <p>INVENT THE FUTURE with the right guidance,design thinking and innovative solutions for Digital transformation.</p>
+                        <p>CONNECT SMART technology advisory services will help transform your business through the management and implementation of new apps, platforms, architecture and tech. We’ll partner with you to determine the right combination of technologies for your business—from the tech that exists today to the emerging tech of tomorrow.</p>
                         <p><a href="#" class="read-more">Read more <i class="icon-chevron-right"></i></a></p>
                     </div>
                 </div>
@@ -89,9 +93,8 @@ p, a span {
             <div class="container">
                 <div class="row row-pb-md">
                     <div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
-                        <h1>Practice Areas</h1>
-                        <p class="sub">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p class="subtle-text animate-box" data-animate-effect="fadeIn">Practice <span>Areas</span></p>
+                        <h1>Our Capabilities</h1>
+                        <p class="subtle-text animate-box" data-animate-effect="fadeIn">Our <span>Capabilities</span></p>
                     </div>
                 </div>
                 <div class="row">
@@ -101,8 +104,10 @@ p, a span {
                                 <img src="images/scale.png" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
                             </div>
                             <div class="gtco-copy">
-                                <h3>Criminal Law</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed scelerisque sapien. Sed sodales, libero non faucibus rutrum, purus tellus finibus diam, eget ornare tortor leo eget erat. </p>
+                                <h3>Software Resellers</h3>
+                                <p>Is your business suffering because you do not have the right ERP package to improve operational efficiency?</p>
+                                <p>Are you finding it difficult to connect to customers or gather customer intelligence?</p>
+                                <p>You have your answer right here since Connect Smart Consulting can help you to resell your software products. We currently function as channel partners for ANTHROPIC SOFTWARES PVT. LTD., MyClassBoard and KAGAMI ERP. We also have a full-fledged sales team covering pan India sales and can ensure that we help you reach out to customers across the country with ease. It’s time to end your quest for software resellers .Reach out to Connect Smart Consulting.</p>
                             </div>
                         </div>
                         <div class="gtco-practice-area-item animate-box">
@@ -110,8 +115,11 @@ p, a span {
                                 <img src="images/scale.png" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
                             </div>
                             <div class="gtco-copy">
-                                <h3>Industrial Law</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed scelerisque sapien. Sed sodales, libero non faucibus rutrum, purus tellus finibus diam, eget ornare tortor leo eget erat. </p>
+                                <h3>Sales & Marketing Consultants in the digital landscape</h3>
+                                <p>Are you new in the digital products and services market and trying to ramp up your customer base?</p>
+                                <p>Do you have access to market and customer information?</p>
+                                <p>Are you in a perpetual struggle to promote your digital products and services to clients?</p>
+                                <p>Then you are at the right place. Connect Smart Consulting are expert consultants for sales and marketing in the digital landscape. We have a SMART human network and can help you reach out to right audience. We are also experts in digital marketing and specialise in SEO optimisation, content curation, mobile marketing and client engagement. So forget your worries on marketing and sales of your digital products and services. Call Connect Smart Consulting now.</p>
                             </div>
                         </div>
                         <div class="gtco-practice-area-item animate-box">
@@ -119,8 +127,22 @@ p, a span {
                                 <img src="images/scale.png" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
                             </div>
                             <div class="gtco-copy">
-                                <h3>Financial Law</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed scelerisque sapien. Sed sodales, libero non faucibus rutrum, purus tellus finibus diam, eget ornare tortor leo eget erat. </p>
+                                <h3>Business Consultants</h3>
+                                <p>Do you have the right information at your fingertips to propel your business forward?</p>
+                                <p>Are you finding it difficult to recruit experts in every functional area of business? Will, having the complete support of domain specialists give your business a new lease of life?</p>
+                                <p>If the answers to even one of the above questions is a yes then you are at the right place. Connect Smart Consulting offers specialist business consulting in various functional area like marketing, information technology, finance and human resource management.  The business has specialist in most domains who can provide advice to bail out your organisation from crises thereby helping you to increase productivity and build competitive advantage. To know more on what we do in business consulting call us now.</p> 
+                            </div>
+                        </div>
+                        <div class="gtco-practice-area-item animate-box">
+                            <div class="gtco-icon">
+                                <img src="images/scale.png" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+                            </div>
+                            <div class="gtco-copy">
+                                <h3>IT Strategy & Consulting</h3>
+                                <p>Have loads of information but no idea of where or how to use it?</p>
+                                <p>Have you thought of building a technology strategy that can give you a better control over competition?</p>
+                                <p>need help in devising techniques for increasing the profit margin and enhancing business efficiency?</p>
+                                <p>Connect Smart Consulting helps to identify, develop and implement strategies that improves the growth prospects of any business, cuts costs and spots never explored revenue streams. This is then used to weave short- and long-term strategies that are centred on best practices to deliver quantifiable results. Are you ready to reach out to Connect Smart Consulting?</p>
                             </div>
                         </div>
                     </div>
@@ -131,8 +153,11 @@ p, a span {
                                 <img src="images/scale.png" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
                             </div>
                             <div class="gtco-copy">
-                                <h3>Divorce Law</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed scelerisque sapien. Sed sodales, libero non faucibus rutrum, purus tellus finibus diam, eget ornare tortor leo eget erat. </p>
+                                <h3>Digital Learning</h3>
+                                <p> Is your child struggling with homework and grades at school?</p>
+                                <p>Have you been looking out for academic support for your child?</p>
+                                <p>Do you find it difficult to drop and pick your kid from tution classes?</p>
+                                <p>If the answer to any of the above questions is yes, then what you need is the support of a SMART Tutor. The SMART Tutor are online tution classes for kids from the age group of 10 -17 studying in grades 5 – 12. The portal offers tutions in all subjects and across syllabi like ICSE, CBSE, and IB. So what are you waiting for? Get the much needed tution support for your kid today.</p>
                             </div>
                         </div>
                         <div class="gtco-practice-area-item animate-box">
@@ -140,8 +165,11 @@ p, a span {
                                 <img src="images/scale.png" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
                             </div>
                             <div class="gtco-copy">
-                                <h3>Corporate Law</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed scelerisque sapien. Sed sodales, libero non faucibus rutrum, purus tellus finibus diam, eget ornare tortor leo eget erat. </p>
+                                <h3>Digital Consulting</h3>
+                                <p>Confused on understanding what digitisation can do for you?</p>
+                                <p>Do you know that going digital can work wonders not just in terms of sourcing new business but also to cut costs?</p>
+                                <p>Do you want to hand over the responsibility of digital management to an expert consultant?</p>
+                                <p>Connect Smart Consulting can help you here. We are experts in digital consulting and undertake a range of services such as Digital Commerce, Digital Marketing and User experience design UX. Connect Smart Consulting helps businesses foster a culture of innovation through usage of technology to achieve greater heights in the digital future. Call us now to know more.</p>
                             </div>
                         </div>
                         <div class="gtco-practice-area-item animate-box">
@@ -149,49 +177,30 @@ p, a span {
                                 <img src="images/scale.png" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
                             </div>
                             <div class="gtco-copy">
-                                <h3>Accident Law</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed scelerisque sapien. Sed sodales, libero non faucibus rutrum, purus tellus finibus diam, eget ornare tortor leo eget erat. </p>
+                                <h3>ERP Consulting</h3>
+                                <p>Ready for a digital transformation through ERP?</p>
+                                <p>Are you bogged down by loads of data and confused in how to make sense out of them?</p>
+                                <p>Ever thought of streamlining operations and thereby increasing overall efficiency of your business?</p>
+                                <p>Connect Smart Consulting offers end to end ERP consulting right from evaluation, selection, implementation and customization of ERP software. Connect Smart Consulting has experienced professionals in the ERP practice who will help you identify processes that can be reengineered to redefine business results. The company can also provide support at any stages of the ERP implementation. If you are looking out for advice or support in ERP project give us a call now.</p>
                             </div>
                         </div>
+                        <div class="gtco-practice-area-item animate-box">
+                            <div class="gtco-icon">
+                                <img src="images/scale.png" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+                            </div>
+                            <div class="gtco-copy">
+                                <h3>Application Support & maintenance</h3>
+                                <p>In a perpetual struggle to use technology to match up to your competitors?</p>
+                                <p>Have you ever wondered how nice it would be to reduce budgets and increase business expectations? Have you found it challenging to manage your applications with the changing times?</p>
+                                <p>Then what you need is the application support and maintenance services of Connect Smart Consulting. The application support team of Connect Smart Consulting will help you fine tune your application to suit the dynamics of the business environment you are a part of and also leverage technology for competitive advantage. So what are you waiting for? Call us now.</p>
+                            </div>
+                        </div>
+                       
                     </div>
                 </div>
             </div>
         </section>
-        <section id="gtco-our-team" data-section="our-team">
-            <div class="container">
-                <div class="row row-pb-md">
-                    <div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
-                        <h1>Our Team</h1>
-                        <p class="sub">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p class="subtle-text animate-box" data-animate-effect="fadeIn">Our Team</p>
-                    </div>
-                </div>
-                <div class="row team-item gtco-team-reverse">
-                    <div class="col-md-6 col-md-push-7 animate-box" data-animate-effect="fadeInRight">
-                        <div class="img-shadow">
-                            <img src="images/img_team_1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-                        </div>
-                    </div>
-                    <div class="col-md-6  col-md-pull-6 animate-box" data-animate-effect="fadeInRight">
-                        <h2>Jeff Finley</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus aliquid maiores, voluptatum ex. Accusantium, eum distinctio laudantium. Perferendis dolor, corporis quasi? Tempore quod molestiae quis cumque pariatur dolore vel sit, fugit delectus quasi reprehenderit officia voluptate incidunt, culpa odit impedit qui dolorum fugiat. Quidem possimus reprehenderit, quae recusandae voluptatibus magnam!</p>
-                        <p>Ratione facilis quod laborum eaque illo dolore blanditiis nobis dicta voluptatem fugit optio, eveniet non dolor quia delectus, sint, dignissimos atque porro consequuntur unde. Soluta ex necessitatibus delectus saepe aliquam, culpa officiis doloremque, ipsa facere hic, voluptatem accusantium veniam, quasi! Explicabo accusantium sint, corporis consequuntur fugit ipsam, dolorum excepturi adipisci.</p>
-                    </div>
-                </div>
-                <div class="row team-item gtco-team">
-                    <div class="col-md-6 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft">
-                        <div class="img-shadow">
-                            <img src="images/img_team_2.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
-                        </div>
-                    </div>
-                    <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                        <h2>Craig Campbell</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus aliquid maiores, voluptatum ex. Accusantium, eum distinctio laudantium. Perferendis dolor, corporis quasi? Tempore quod molestiae quis cumque pariatur dolore vel sit, fugit delectus quasi reprehenderit officia voluptate incidunt, culpa odit impedit qui dolorum fugiat. Quidem possimus reprehenderit, quae recusandae voluptatibus magnam!</p>
-                        <p>Ratione facilis quod laborum eaque illo dolore blanditiis nobis dicta voluptatem fugit optio, eveniet non dolor quia delectus, sint, dignissimos atque porro consequuntur unde. Soluta ex necessitatibus delectus saepe aliquam, culpa officiis doloremque, ipsa facere hic, voluptatem accusantium veniam, quasi! Explicabo accusantium sint, corporis consequuntur fugit ipsam, dolorum excepturi adipisci.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <section id="gtco-contact" data-section="contact">
             <div class="container">
                 <div class="row row-pb-md">
@@ -241,45 +250,59 @@ p, a span {
             </div>
         </section>
 
+        @*<div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>*@
 
-        <section id="gtco-Login" data-section="Login">
-         @using(Html.BeginForm("Login", "Home", "POST"))
-         {
-             
         
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="login-panel panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Please Sign In</h3>
-                            </div>
-                            <div class="panel-body">
-                                <form role="form">
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <input class="form-control" placeholder="E-mail" name="UserName" type="email"  id="txtUid">
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control" placeholder="Password" name="password" type="password" value="" id="txtpwd">
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                            </label>
-                                        </div>
-                                        <!-- Change this to a button or input when using this as a form -->
-                                        <button type="submit"   href="index.html" class="btn btn-lg btn-success btn-block" id="btnLogin">Login</button>
-                                    </fieldset>
-                                </form>
-                            </div>
+    <section id="gtco-Login" data-section="Login">
+     @using(Html.BeginForm("Login", "Home", "POST"))
+     {
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Please Sign In</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="E-mail" name="UserName" type="email"  id="txtUid">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Password" name="password" type="password" value="" id="txtpwd">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        </label>
+                                    </div>
+                                    <!-- Change this to a button or input when using this as a form -->
+                                    <button type="submit"   href="index.html" class="btn btn-lg btn-success btn-block" id="btnLogin">Login</button>
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-             
-         }
-        </section>
+        </div>
+
+     }
+    </section>
+        
 
         <footer id="gtco-footer" role="contentinfo">
             <div class="container">

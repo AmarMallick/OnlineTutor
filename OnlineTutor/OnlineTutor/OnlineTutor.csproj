@@ -201,15 +201,18 @@
     <Content Include="Content\custom\owl.theme.default.min.css" />
     <Content Include="Content\custom\style.css" />
     <Content Include="Content\custom\themify-icons.css" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\icomoon\icomoon.svg" />
     <Content Include="fonts\themify-icons\themify.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Ico2.jpg" />
+    <Content Include="Images\logo_1000x1000px.png" />
     <Content Include="Images\Logo_PNG.png" />
     <Content Include="Images\Whatsapp Profile Pic -- 1.png" />
     <Content Include="Images\Logo3.png" />
+    <Content Include="Images\logo_1495x768px.png" />
     <Content Include="Scripts\admin\flot-data.js" />
     <Content Include="Scripts\admin\metisMenu.min.js" />
     <Content Include="Scripts\admin\morris-data.js" />
@@ -226,7 +229,7 @@
     <Content Include="fonts\themify-icons\themify.eot" />
     <Content Include="fonts\themify-icons\themify.ttf" />
     <Content Include="fonts\themify-icons\themify.woff" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon3.ico" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
     <None Include="Properties\PublishProfiles\connectsmartconsulting - FTP.pubxml" />
