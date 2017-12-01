@@ -7,13 +7,16 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
+using System.Configuration;
 
 namespace OnlineTutor.Module
 {
     public class UserModule
     {
 
-         private string uRL= "http://localhost:51307/api/";
+        private string uRL = ConfigurationManager.AppSettings["ApiUrl"].ToString();
+            //"http://connectsmartconsultingapi.azurewebsites.net/api";
+             //ConfigurationManager.ConnectionStrings["ApiUrl"].ConnectionString.ToString(); //"http://localhost:51307/api/";
 
         public List<User> GetAllUser()
         {
